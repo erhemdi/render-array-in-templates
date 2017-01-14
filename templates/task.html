@@ -1,0 +1,49 @@
+{{ define "task.html" }}
+<html>
+<head>
+    <title>Task</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created</th>
+            <tr>
+
+            {{ range .Tasks }}
+                <tr>
+                    <td>{{ .Title }}</td>
+                    <td>{{ .Content }}</td>
+                    <td>{{ .Created }}</td>
+                </tr>
+            {{ end }}
+        </table>
+
+        <br/><br/>
+    
+        <table class="table table-hover">
+            <tr>
+                <th># (key)</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created</th>
+                <th>All value (value)</th>
+            </tr>
+
+            {{ range $key, $value := .Tasks }}
+                <tr>
+                    <td>{{ $key }}</td>
+                    <td>{{ .Title }}</td>
+                    <td>{{ .Content }}</td>
+                    <td>{{ .Created }}</td>
+                    <td>{{ $value }}</td>
+                </tr>
+            {{ end }}
+        </table>
+    </div>
+</body>
+</html>
+{{ end }}
